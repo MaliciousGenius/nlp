@@ -10,15 +10,15 @@ import urllib.request
 inFile = sys.argv[1]
 outFile = sys.argv[2]
 
-def gethtml(url1):
-    headers = {
-       'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'
-    }
-    req = urllib.request.Request(
-    url = url1,
-    headers = headers
-    )
-    html = urllib.request.urlopen(req).read()
+
+def gethtml(url):
+    try:
+        response=requests.request('get',url,headers=header,timeout=30)
+        response.raise_for_status()
+        response.encoding=response.apparent_encoding
+        html=response.content
+    except:
+        print("error")
     return html
 
 with open(inFile, 'r+') as input, open(outFile,'w+') as out:
@@ -26,5 +26,4 @@ with open(inFile, 'r+') as input, open(outFile,'w+') as out:
         if len(line) > 1:
             html = gethtml("https://ru.wikipedia.org/wiki/" + line)
             out.write(str(html))
-
 
