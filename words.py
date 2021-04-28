@@ -34,7 +34,7 @@ def create_words(text_file):
         word_lower = word.lower()
         if not check_if_string_in_file("dataset/words.txt", word_lower):
             with open("dataset/words.txt", "a") as out_file:
-                out_file.write(word_lower + "\n")
+                out_file.write(word_lower + "\n\n")
 
 def main():
     if os.path.exists("dataset/words.txt"):

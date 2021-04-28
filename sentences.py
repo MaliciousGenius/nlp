@@ -27,7 +27,7 @@ def create_sentences(text_file, min_sentence_len):
     with open("dataset/sentences.txt", "a") as out_file:
         for sentence in sentences:
             if len(sentence) > min_sentence_len:
-                out_file.write(sentence + "\n")
+                out_file.write(sentence + "\n\n")
 
 def main():
     if os.path.exists("dataset/sentences.txt"):

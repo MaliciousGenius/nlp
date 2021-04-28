@@ -37,7 +37,7 @@ def distillation_paragraphs(dataset_type, min_paragraph_len, max_paragraph_len):
         if not check_if_string_in_file("dataset/paragraphs.txt", line):
             if len(line) > min_paragraph_len and len(line) < max_paragraph_len and line.count('.') < 10 and line.count('ISBN') == 0:
                 with open("dataset/paragraphs.txt", "a") as out:
-                    out.write(line)
+                    out.write(line + "\n")
 
 
 def main():

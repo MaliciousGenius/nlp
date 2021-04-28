@@ -12,7 +12,8 @@ def  create_stat_file():
         if txt_file.is_file() and txt_file.path.split('.')[-1].lower() == "txt":
             counter = 0
             for line in open(txt_file, "r+").readlines():
-                counter += 1
+                if line != '\n':
+                    counter += 1
             with open("dataset/stats.txt", "a") as out:
                 out.write("file: " + txt_file.path.split('.')[-2].lower() + " count: " + str(counter) + "\n")
 
